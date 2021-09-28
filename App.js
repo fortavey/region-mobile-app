@@ -6,7 +6,7 @@ import { Navbar } from './src/components/Navbar';
 import { Search } from './src/components/Search';
 
 export default function App() {
-  const [page, setPage] = useState(2)
+  const [page, setPage] = useState(3)
 
   const changePage = (num) => {
     setPage(num);
@@ -17,13 +17,13 @@ export default function App() {
   )
   switch(page) {
     case 1:
-      content = (<Main />); break;
+      content = (<Main changePage={changePage}/>); break;
     case 2:
       content = (<Search changePage={changePage}/>); break;
     case 3:
       content = (<List />); break;
     default:
-      content = (<Main />); break;
+      content = (<Main changePage={changePage}/>); break;
   }
 
   return (

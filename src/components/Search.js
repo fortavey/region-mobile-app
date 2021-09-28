@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import regionList from '../arrays/searchList';
 
 export const Search = ({ changePage }) => {
-    const [number, setNumber] = useState('45');
+    const [number, setNumber] = useState('01');
     const [render, setRender] = useState('');
 
     useEffect(() => {
@@ -106,7 +106,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'stretch',
-        borderRadius: 5
+        borderRadius: 5,
+        shadowColor: '#000',
+        shadowRadius: 2,
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 3, height: 3 },
+        elevation: 8
     },
     itemText: {
         fontSize: 20
@@ -120,7 +125,12 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginBottom: 50,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowRadius: 2,
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 3, height: 3 },
+        elevation: 8
     },
     flag: {
         width: 30,
