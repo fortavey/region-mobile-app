@@ -6,7 +6,7 @@ import { Navbar } from './src/components/Navbar';
 import { Search } from './src/components/Search';
 
 export default function App() {
-  const [page, setPage] = useState(3)
+  const [page, setPage] = useState(1)
 
   const changePage = (num) => {
     setPage(num);

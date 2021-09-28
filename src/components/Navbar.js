@@ -22,10 +22,12 @@ export const Navbar = ({ page, changePage }) => {
       }
 
     return (
-        <View style={styles.navbar}>
-            <AntDesign name="arrowleft" size={24} color="white"  onPress={pressBack}/>
-            <Text style={styles.text}>{ title }</Text>
-            <AntDesign name="search1" size={24} color="white" onPress={pressSearch}/>
+        <View style={{backgroundColor:'white',height:90,justifyContent:'flex-end'}}>
+            <View style={styles.navbar}>
+                <AntDesign name="arrowleft" size={24} color="white"  onPress={pressBack}/>
+                <Text style={styles.text}>{ title }</Text>
+                <AntDesign name="search1" size={24} color="white" onPress={pressSearch}/>
+            </View>
         </View>
     )
 }
