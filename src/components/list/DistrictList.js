@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import distList from '../../arrays/distList';
 
 export const DistrictList = (props) => {
 
     function returnRegion(arr) {
         const list = arr.map(reg => (
-            <View style={styles.listItem}>
+            <View style={styles.listItem} key={Math.random().toString()}>
                 <View style={styles.listItemNumber}>
                     <Text style={styles.listItemNumberText}>{reg.id}</Text>
                 </View>
@@ -16,19 +16,18 @@ export const DistrictList = (props) => {
         return list;
     }
 
-    const content = distList.map(dist => {
-        return (
-            <View>
-                <View style={styles.distTitle}>{dist.district}</View>
-                {returnRegion(dist.regions)}
-            </View>
-        )
-    })
-
     return (
-        <View>
-            { content }
-        </View>
+        <FlatList
+        data={distList}
+        renderItem={({item}) => (
+            <View>
+                <View style={styles.distTitle}><Text>{item.district}</Text></View>
+                {returnRegion(item.regions)}
+            </View>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+        >
+        </FlatList>
     )
 }
 
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     },
     listItem: {
         borderBottomWidth: 1,
-        height: 40,
+        height: 50,
         flexDirection: 'row',
         alignItems: 'center'
     },

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import fullListArr from '../../arrays/fullList';
+import fullListArr from '../../arrays/fullList'
 
 export const FullList = (props) => {
 
@@ -23,7 +23,7 @@ export const FullList = (props) => {
 const styles = StyleSheet.create({
     listItem: {
         borderBottomWidth: 1,
-        height: 40,
+        height: 50,
         flexDirection: 'row',
         alignItems: 'center'
     },

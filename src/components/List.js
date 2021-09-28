@@ -7,7 +7,12 @@ export const List = (props) => {
 
     const [listId, setListId] = useState(1);
 
-    let content = listId == 1 ? (<FullList />) : listId == 2 ? (<DistrictList />) : (<FullList />);
+    let content = (<FullList />);
+    if(listId == 1) {
+        content = (<FullList />);
+    }else if(listId == 2) {
+        content = (<DistrictList />);
+    }
 
     const setFullList = () => {
         setListId(1);
