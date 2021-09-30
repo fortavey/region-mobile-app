@@ -22,7 +22,7 @@ export const Navbar = ({ page, changePage }) => {
       }
 
     return (
-        <View style={{backgroundColor:'white',height:90,justifyContent:'flex-end'}}>
+        <View style={{backgroundColor:'white',height:103,justifyContent:'flex-end'}}>
             <View style={styles.navbar}>
                 <AntDesign name="arrowleft" size={24} color="white"  onPress={pressBack}/>
                 <Text style={styles.text}>{ title }</Text>
@@ -37,9 +37,10 @@ const styles = StyleSheet.create({
         height: 70,
         backgroundColor: 'blue',
         flexDirection: 'row',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 10
+        paddingLeft: 10,
+        paddingRight: 10
     },
     text: {
         color: '#fff',
