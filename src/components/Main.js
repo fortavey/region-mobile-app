@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"; 
 
-export const Main = ({ changePage, title }) => {
+export const Main = ({ changePage }) => {
 
     const pressSearch = () => {
         changePage(2);
@@ -13,7 +13,7 @@ export const Main = ({ changePage, title }) => {
     return (
         <View style={styles.main}>
             <View style={styles.mainTitle}>
-                <Text style={styles.mainTitleText}>Автомобильные коды регионов России { title }</Text>
+                <Text style={styles.mainTitleText}>Автомобильные коды регионов России</Text>
             </View>
             <TouchableOpacity style={styles.mainListItem} onPress={pressSearch}>
                 <Text style={styles.mainListItemText}>Поиск</Text>

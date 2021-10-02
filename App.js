@@ -1,56 +1,51 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { List } from './src/components/List';
-import { Main } from './src/components/Main';
-import { Navbar } from './src/components/Navbar';
-import { Search } from './src/components/Search';
+import AppLoading from 'expo-app-loading';
+import { bootstrap } from './src/bootstrap';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Platform } from 'react-native';
+
+import { FirstScreen } from './src/screens/FirstScreen';
+import { MainScreen } from './src/screens/MainScreen';
+import { SearchScreen } from './src/screens/SearchScreen';
+import { FullListScreen } from './src/screens/FullListScreen';
+import { ItemScreen } from './src/screens/ItemScreen';
+import { MapScreen } from './src/screens/MapScreen';
+
+import { THEME } from './src/theme';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [page, setPage] = useState(1)
-  const [text, setText] = useState('url')
+  const [isReady, setIsReady] = useState(false);
 
-  const changePage = (num) => {
-    setPage(num);
+  if(!isReady) {
+    <AppLoading 
+      startAsync={bootstrap}
+      onFinish={() => setIsReady(true)}
+      onError={err => console.log(err)}
+    />
   }
 
-  const fetchUrl = async () => {
-    const response = await fetch(
-      'https://fortavey.ru/request.php',
-      {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
-    const data = await response.json();
-    setText(data.url)
-  }
-
-  const loadUrl = useCallback(async () => await fetchUrl(), [fetchUrl]);
-
-  useEffect(() => {
-    loadUrl();
-  }, [])
-
-  let content = (
-    <Main/>
-  )
-  switch(page) {
-    case 1:
-      content = (<Main changePage={changePage} title={text}/>); break;
-    case 2:
-      content = (<Search changePage={changePage}/>); break;
-    case 3:
-      content = (<List />); break;
-    default:
-      content = (<Main changePage={changePage}/>); break;
+  const options = {
+    headerStyle: {
+      backgroundColor: Platform.OS === 'ios' ? '#fff' : THEME.MAIN_COLOR,
+    },
+    headerTintColor: Platform.OS === 'ios' ? THEME.MAIN_COLOR : '#fff',
   }
 
   return (
-    <View style={styles.container}>
-      <Navbar page={page} changePage={changePage}/>
-      { content }
-    </View>
-  );
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Search" component={SearchScreen} options={{...options, title: 'Поиск'}}/>
+      <Stack.Screen name="First" component={FirstScreen} options={{...options, title: 'Первый экран'}}/>
+      <Stack.Screen name="Main" component={MainScreen} options={{...options, title: 'Главная'}}/>
+      <Stack.Screen name="FullList" component={FullListScreen} options={{...options, title: 'Полный список'}}/>
+      <Stack.Screen name="Item" component={ItemScreen} options={{...options, title: 'Регион'}}/>
+      <Stack.Screen name="Map" component={MapScreen} options={{...options, title: 'Карта'}}/>
+    </Stack.Navigator>
+  </NavigationContainer>);
 }
 
 const styles = StyleSheet.create({
