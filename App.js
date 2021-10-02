@@ -10,6 +10,7 @@ import { FirstScreen } from './src/screens/FirstScreen';
 import { MainScreen } from './src/screens/MainScreen';
 import { SearchScreen } from './src/screens/SearchScreen';
 import { FullListScreen } from './src/screens/FullListScreen';
+import { DistListScreen } from './src/screens/DistListScreen';
 import { ItemScreen } from './src/screens/ItemScreen';
 import { MapScreen } from './src/screens/MapScreen';
 
@@ -42,6 +43,7 @@ export default function App() {
       <Stack.Screen name="First" component={FirstScreen} options={{...options, title: 'Первый экран'}}/>
       <Stack.Screen name="Main" component={MainScreen} options={{...options, title: 'Главная'}}/>
       <Stack.Screen name="FullList" component={FullListScreen} options={{...options, title: 'Полный список'}}/>
+      <Stack.Screen name="DistList" component={DistListScreen} options={{...options, title: 'Полный список'}}/>
       <Stack.Screen name="Item" component={ItemScreen} options={{...options, title: 'Регион'}}/>
       <Stack.Screen name="Map" component={MapScreen} options={{...options, title: 'Карта'}}/>
     </Stack.Navigator>

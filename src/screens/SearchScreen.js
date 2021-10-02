@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
-import regionList from '../arrays/searchList';
 import { THEME } from "../theme";
 import { Number } from '../components/Number';
+import fullListArr from '../arrays/fullList';
 
 export const SearchScreen = ({ navigation }) => {
     const [number, setNumber] = useState('01');
     const [render, setRender] = useState('');
 
     useEffect(() => {
-        const currentRegion = regionList.filter(reg => reg.id == number);
+        const currentRegion = fullListArr.filter(el => el.code.includes(parseInt(number)));
         if(number.length) {
             currentRegion.length ? setRender(currentRegion[0].name) : setRender('Ничего не найдено');
         }else {
             setRender('')
         }
     })
-
-    const pressList = () => changePage(3);
 
     const pressNumber = (num) => number.length < 3 ? setNumber(number + num) : null;
 

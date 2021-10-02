@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import fullListArr from '../arrays/fullList'
+import fullListArr from '../arrays/fullList';
+import { BottomTabs } from '../components/BottomTabs';
 
 export const FullListScreen = ({navigation}) => {
 
@@ -12,20 +13,23 @@ export const FullListScreen = ({navigation}) => {
     }, []);
 
     return (
-        <FlatList
-            data={newArr}
-            renderItem={({item}) => (
-                <TouchableOpacity onPress={() => navigation.navigate('Item', {...fullListArr.filter(el => el.id == item.realId)})}>
-                    <View style={styles.listItem}>
-                        <View style={styles.listItemNumber}>
-                            <Text style={styles.listItemNumberText}>{item.code < 10 ? `0${item.code}` : item.code}</Text>
+        <View>
+            <FlatList
+                data={newArr}
+                renderItem={({item}) => (
+                    <TouchableOpacity onPress={() => navigation.navigate('Item', {...fullListArr.filter(el => el.id == item.realId)})}>
+                        <View style={styles.listItem}>
+                            <View style={styles.listItemNumber}>
+                                <Text style={styles.listItemNumberText}>{item.code < 10 ? `0${item.code}` : item.code}</Text>
+                            </View>
+                            <Text style={styles.listItemText}>{item.name}</Text>
                         </View>
-                        <Text style={styles.listItemText}>{item.name}</Text>
-                    </View>
-                </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id.toString()}
-        />
+                    </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.id.toString()}
+            />
+            <BottomTabs />
+        </View>
     )
 }
 
