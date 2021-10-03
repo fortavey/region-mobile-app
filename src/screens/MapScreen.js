@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { WebView } from 'react-native-webview';
 

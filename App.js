@@ -1,9 +1,7 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState} from 'react';
 import AppLoading from 'expo-app-loading';
 import { bootstrap } from './src/bootstrap';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Platform } from 'react-native';
 import { FirstScreen } from './src/screens/FirstScreen';
@@ -11,12 +9,8 @@ import { MainScreen } from './src/screens/MainScreen';
 import { SearchScreen } from './src/screens/SearchScreen';
 import { FullListScreen } from './src/screens/FullListScreen';
 import { DistListScreen } from './src/screens/DistListScreen';
-import { ItemScreen } from './src/screens/ItemScreen';
-import { MapScreen } from './src/screens/MapScreen';
-
 import { THEME } from './src/theme';
 
-const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -48,10 +42,3 @@ export default function App() {
     </Drawer.Navigator>
   </NavigationContainer>);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#276ad6'
-  },
-});
