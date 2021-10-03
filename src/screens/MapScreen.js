@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { WebView } from 'react-native-webview';
 
 export const MapScreen = ({ navigation }) => {
 
@@ -14,7 +15,10 @@ export const MapScreen = ({ navigation }) => {
 
     return (
         <View style={styles.main}>
-            <Text>MapScreen</Text>
+            <WebView 
+                style={styles.container}
+                source={{ uri: 'https://fortavey.ru/map/index.html' }}
+            />
         </View>
     );
 }
@@ -24,5 +28,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    container: {
+        flex: 1
     }
 })

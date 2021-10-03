@@ -43,10 +43,8 @@ export default function App() {
         <Drawer.Screen name="First" component={FirstScreen} options={{...options, title: ''}}/>
         <Drawer.Screen name="Main" component={MainScreen} options={{...options, title: 'Главная'}}/>
         <Drawer.Screen name="Search" component={SearchScreen} options={{...options, title: 'Поиск'}}/>
-        <Stack.Screen name="FullList" component={FullListScreen} options={{...options, title: 'Полный список'}}/>
-        <Stack.Screen name="DistList" component={DistListScreen} options={{...options, title: 'Список по округам'}}/>
-        <Stack.Screen name="Item" component={ItemScreen} options={{...options, title: 'Регион'}}/>
-        <Stack.Screen name="Map" component={MapScreen} options={{...options, title: 'Карта'}}/>
+        <Drawer.Screen name="FullList" component={FullListScreen} options={{...options, title: 'Полный список'}}/>
+        <Drawer.Screen name="DistList" component={DistListScreen} options={{...options, title: 'Список по округам'}}/>
     </Drawer.Navigator>
   </NavigationContainer>);
 }

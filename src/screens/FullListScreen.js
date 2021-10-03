@@ -1,59 +1,21 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import fullListArr from '../arrays/fullList';
-import { BottomTabs } from '../components/BottomTabs';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FullListComponent } from '../components/FullListComponent';
+import { DistListComponent } from '../components/DistListComponent';
+import { ItemScreen } from './ItemScreen';
+import { MapScreen } from './MapScreen';
 
-export const FullListScreen = ({navigation}) => {
+const Stack = createNativeStackNavigator();
 
-    const newArr = fullListArr.reduce((acc,el) => {
-        el.code.forEach(code => {
-            acc.push({id:code,name:el.name,realId:el.id,code});
-        });
-        return acc;
-    }, []);
-
+export const FullListScreen = () => {
     return (
-        <View style={{flex:1}}>
-            <FlatList
-                data={newArr}
-                renderItem={({item}) => (
-                    <TouchableOpacity onPress={() => navigation.navigate('Item', {...fullListArr.filter(el => el.id == item.realId)})}>
-                        <View style={styles.listItem}>
-                            <View style={styles.listItemNumber}>
-                                <Text style={styles.listItemNumberText}>{item.code < 10 ? `0${item.code}` : item.code}</Text>
-                            </View>
-                            <Text style={styles.listItemText}>{item.name}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
-                keyExtractor={(item) => item.id.toString()}
-            />
-            <BottomTabs navigation={navigation} />
-        </View>
-    )
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="FullListComponent" component={FullListComponent} />
+            <Stack.Screen name="DistListComponent" component={DistListComponent} />
+            <Stack.Screen name="Item" component={ItemScreen} />
+            <Stack.Screen name="Map" component={MapScreen} />
+        </Stack.Navigator>
+      );
 }
-
-const styles = StyleSheet.create({
-    listItem: {
-        borderBottomWidth: 1,
-        height: 50,
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    listItemText: {
-        fontSize: 15
-    },
-    listItemNumber: {
-        width: 40,
-        height: 30,
-        borderWidth: 2,
-        borderRadius: 5,
-        marginLeft: 10,
-        marginRight: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    listItemNumberText: {
-        fontSize: 18
-    }
-})
