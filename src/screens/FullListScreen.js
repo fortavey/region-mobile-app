@@ -13,7 +13,7 @@ export const FullListScreen = ({navigation}) => {
     }, []);
 
     return (
-        <View>
+        <View style={{flex:1}}>
             <FlatList
                 data={newArr}
                 renderItem={({item}) => (
@@ -28,7 +28,7 @@ export const FullListScreen = ({navigation}) => {
                 )}
                 keyExtractor={(item) => item.id.toString()}
             />
-            <BottomTabs />
+            <BottomTabs navigation={navigation} />
         </View>
     )
 }

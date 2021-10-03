@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { THEME } from "../theme";
 
 export const BottomTabs = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.item}><Text style={styles.itemText}>Полный список</Text></View>
-            <View style={styles.item}><Text style={styles.itemText}>Список по округам</Text></View>
+            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('FullList')}>
+                <Text style={styles.itemText}>Полный список</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('DistList')}>
+                <Text style={styles.itemText}>Список по округам</Text>
+            </TouchableOpacity>
         </View>
     );
 }

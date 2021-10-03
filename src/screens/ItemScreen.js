@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     },
     itemTitle: {
         fontSize: 20,
-        fontFamily: 'roboto-bold, sans-serif',
         marginBottom: 10,
-        marginTop: 20
+        marginTop: 20,
+        textAlign: 'center'
     },
     mapButton: {
         width: '80%',

@@ -4,8 +4,8 @@ import AppLoading from 'expo-app-loading';
 import { bootstrap } from './src/bootstrap';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Platform } from 'react-native';
-
 import { FirstScreen } from './src/screens/FirstScreen';
 import { MainScreen } from './src/screens/MainScreen';
 import { SearchScreen } from './src/screens/SearchScreen';
@@ -17,6 +17,7 @@ import { MapScreen } from './src/screens/MapScreen';
 import { THEME } from './src/theme';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -38,15 +39,15 @@ export default function App() {
 
   return (
   <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Search" component={SearchScreen} options={{...options, title: 'Поиск'}}/>
-      <Stack.Screen name="First" component={FirstScreen} options={{...options, title: 'Первый экран'}}/>
-      <Stack.Screen name="Main" component={MainScreen} options={{...options, title: 'Главная'}}/>
-      <Stack.Screen name="FullList" component={FullListScreen} options={{...options, title: 'Полный список'}}/>
-      <Stack.Screen name="DistList" component={DistListScreen} options={{...options, title: 'Полный список'}}/>
-      <Stack.Screen name="Item" component={ItemScreen} options={{...options, title: 'Регион'}}/>
-      <Stack.Screen name="Map" component={MapScreen} options={{...options, title: 'Карта'}}/>
-    </Stack.Navigator>
+    <Drawer.Navigator>
+        <Drawer.Screen name="First" component={FirstScreen} options={{...options, title: ''}}/>
+        <Drawer.Screen name="Main" component={MainScreen} options={{...options, title: 'Главная'}}/>
+        <Drawer.Screen name="Search" component={SearchScreen} options={{...options, title: 'Поиск'}}/>
+        <Stack.Screen name="FullList" component={FullListScreen} options={{...options, title: 'Полный список'}}/>
+        <Stack.Screen name="DistList" component={DistListScreen} options={{...options, title: 'Список по округам'}}/>
+        <Stack.Screen name="Item" component={ItemScreen} options={{...options, title: 'Регион'}}/>
+        <Stack.Screen name="Map" component={MapScreen} options={{...options, title: 'Карта'}}/>
+    </Drawer.Navigator>
   </NavigationContainer>);
 }
 
