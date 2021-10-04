@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Авто регионы РФ",
+    "name": "Регионы - Все Автономера России",
     "slug": "region-mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#276AD6"
+      "backgroundColor": "#303f9f"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +24,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#276AD6"
+        "backgroundColor": "#303f9f"
       },
       "package": "ru.fortavey.regionmobileapp",
       "versionCode": 1,
