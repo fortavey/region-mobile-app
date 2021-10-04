@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { THEME } from '../theme';
 
-export const FirstScreen = ({}) => {
+export const FirstScreen = () => {
+
+    const [first, setFirst] = useState(true);
+    // setFirst(false);
+
+    const renderElement = () => {
+        if(first) {
+            return (
+                <Text style={{color:'#fff',fontSize:24,textAlign:'center'}}>"Регионы - Все Автономера России"</Text>
+            )
+        }
+    }
+
+    useEffect(() => {
+        setFirst(true)
+    }, [])
+
     return (
         <View style={styles.main}>
             <Image
                 style={styles.tinyLogo}
                 source={require('../../assets/adaptive-icon.png')}
             />
-            <Text style={{color:'#fff',fontSize:24,textAlign:'center'}}>"Регионы - Все Автономера России"</Text>
+            { renderElement() }
         </View>
     );
 }

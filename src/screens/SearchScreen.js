@@ -9,12 +9,23 @@ export const SearchScreen = ({ navigation }) => {
     const [number, setNumber] = useState('01');
     const [render, setRender] = useState('');
 
+    let currentRegion = currentRegion = fullListArr.filter(el => el.code.includes(parseInt(number)));
+
+    const renderMore = () => {
+        if (currentRegion.length) {
+            return (
+                <TouchableOpacity style={styles.moreButton} onPress={() => navigation.navigate('Item', {...currentRegion})}>
+                    <Text style={{color:'#fff'}}>Подробности</Text>
+                </TouchableOpacity>
+            )
+        }
+    }
+
     useEffect(() => {
-        const currentRegion = fullListArr.filter(el => el.code.includes(parseInt(number)));
         if(number.length) {
             currentRegion.length ? setRender(currentRegion[0].name) : setRender('Ничего не найдено');
         }else {
-            setRender('')
+            setRender('');
         }
     })
 
@@ -26,6 +37,7 @@ export const SearchScreen = ({ navigation }) => {
                 <Text style={{fontSize:30,color:THEME.MAIN_COLOR,textAlign:'center'}}>{render}</Text>
             </View>
             <Number number={number} isSearch={true}/>
+            {renderMore()}
             <View style={styles.keyboard}>
                 <TouchableOpacity style={styles.item} onPress={() => pressNumber(1)}>
                     <Text style={styles.itemText}>1</Text>
@@ -79,13 +91,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    moreButton: {
+        width: '60%',
+        height: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: THEME.MAIN_COLOR,
+        marginTop: 15,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        borderRadius: 5,
+        shadowColor: '#000',
+        shadowRadius: 2,
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 3, height: 3 },
+        elevation: 8
+    },
     keyboard: {
         height: 240,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         alignItems: 'stretch',
-        marginTop: 50
+        marginTop: 15
     },
     item: {
         width: '22%',
