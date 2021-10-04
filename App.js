@@ -41,7 +41,7 @@ export default function App({navigation}) {
         onPress={() => navigation.navigate('Search')} 
         name="search1" 
         size={24} 
-        color="#fff"
+        color={Platform.OS === 'ios' ? THEME.MAIN_COLOR : '#fff'}
         style={styles.searchButton}
       />
     )
