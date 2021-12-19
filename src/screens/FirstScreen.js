@@ -5,7 +5,6 @@ import { StatusBar } from 'expo-status-bar'
 
 export const FirstScreen = () => {
   const [first, setFirst] = useState(true)
-  // setFirst(false);
 
   const renderElement = () => {
     if (first) {
@@ -23,7 +22,7 @@ export const FirstScreen = () => {
 
   return (
     <View style={styles.main}>
-      <StatusBar style="light" backgroundColor={THEME.MAIN_COLOR} />
+      <StatusBar style="dark" backgroundColor={THEME.MAIN_COLOR} />
       <Image
         style={styles.tinyLogo}
         source={require('../../assets/adaptive-icon.png')}
